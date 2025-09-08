@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        .card{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div class="nav">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Welcome Admin</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Summary</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Logout</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search"
+                                    aria-label="Search" />
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="content">
+                <h3 class="headings">Requested E-books</h3>
+                <div class="table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Username</th>
+
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Book 1</td>
+                                <td>Author1</td>
+                                <td>User 1</td>
+
+                                <td class="d-flex justify-content-center"><a href="" class="btn btn-info mx-2">Grant</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Book 2</td>
+                                <td>Author2</td>
+                                <td>User 2</td>
+                                <td class="d-flex justify-content-center"><a href="" class="btn btn-info mx-2">Grant</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-evenly text-center">
+                        <div class="card bg-info p-3">
+                            <h5>Users</h5>
+                            <h1>5</h1>
+                        </div>
+                        <div class="card bg-warning p-3">
+                            <h5>Requests</h5>
+                            <h1>5</h1>
+                        </div>
+                        <div class="card bg-success p-3">
+                            <h5>Granted</h5>
+                            <h1>5</h1>
+                        </div>
+                        <div class="card bg-secondary p-3">
+                            <h5>Available</h5>
+                            <h1>5</h1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-end mx-1 my-5">
+                    <a href="" class="btn btn-primary">Request E-Book</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>

@@ -19,21 +19,23 @@
         <div id="canvas">
             <div id="form-body">
                 <h1>E-book Details</h1>
-                <div class="mb-3">
-                    <label for="bname1" class="form-label">Book Name</label>
-                    <input type="text" class="form-control" id="bname1" placeholder="Your Book Name">
-                </div>
-                <div class="mb-3">
-                    <label for="aname1" class="form-label">Author Name</label>
-                    <input type="text" class="form-control" id="aname1" placeholder="Gandhi Jee">
-                </div>
-                <div class="mb-3">
-                    <label for="uname1" class="form-label">Url</label>
-                    <input type="text" class="form-control" id="uname1" placeholder="http://....">
-                </div>
-                <div class="text-center">
-                    <input type="button" class="btn btn-primary" value="Add Book"> 
-                </div>
+                <form action="/create-ebook" method="post">
+                    <div class="mb-3">
+                        <label for="bname1" class="form-label">Book Name</label>
+                        <input type="text" class="form-control" id="bname1" name="name" placeholder="Your Book Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="aname1" class="form-label">Author Name</label>
+                        <input type="text" class="form-control" id="aname1" name="author" placeholder="Gandhi Jee">
+                    </div>
+                    <div class="mb-3">
+                        <label for="uname1" class="form-label">Url</label>
+                        <input type="text" class="form-control" id="uname1" name="url" placeholder="http://....">
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary" value="Add Book">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

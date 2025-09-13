@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/style.css">
 
     <style>
-        .card{
+        .card {
             width: 200px;
         }
     </style>
@@ -20,21 +20,26 @@
             <div class="nav">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Welcome Admin</a>
+                        <a class="navbar-brand" href="#">Welcome {{this_user.username}}</a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Summary</a>
+                                    <a class="nav-link active" aria-current="page" href="/summary">Summary</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Logout</a>
+                                    <a class="nav-link active" aria-current="page" href="/login">Logout</a>
                                 </li>
                             </ul>
-                            <form class="d-flex" role="search">
+                            <form class="d-flex" role="search" action="/search">
                                 <input class="form-control me-2" type="search" placeholder="Search"
-                                    aria-label="Search" />
+                                    aria-label="Search" name="search" />
+                                <select class="form-select me-2" aria-level="Default select example" name="key">
+                                    <option selected>Select</option>
+                                    <option value="user">User</option>
+                                    <option value="ebook">Ebook</option>
+                                </select>
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </form>
                         </div>
@@ -56,47 +61,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Book 1</td>
-                                <td>Author1</td>
-                                <td>User 1</td>
+                            {% for ebook in req_ebooks %}
 
-                                <td class="d-flex justify-content-center"><a href="" class="btn btn-info mx-2">Grant</a>
-                                </td>
-                            </tr>
                             <tr>
-                                <th scope="row">2</th>
-                                <td>Book 2</td>
-                                <td>Author2</td>
-                                <td>User 2</td>
-                                <td class="d-flex justify-content-center"><a href="" class="btn btn-info mx-2">Grant</a>
+                                <th scope="row">{{ebook.id}}</th>
+                                <td>{{ebook.name}}</td>
+                                <td>{{ebook.author}}</td>
+                                <td>{{ebook.bearer.username}}</td>
+
+                                <td class="d-flex justify-content-center"><a
+                                        href="/grant/{{ebook.id}}/{{ebook.user_id}}" class="btn btn-info mx-2">Grant</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-evenly text-center">
                         <div class="card bg-info p-3">
                             <h5>Users</h5>
-                            <h1>5</h1>
+                            <h1>{{users}}</h1>
                         </div>
                         <div class="card bg-warning p-3">
                             <h5>Requests</h5>
-                            <h1>5</h1>
+                            <h1>{{reqs}}</h1>
                         </div>
                         <div class="card bg-success p-3">
                             <h5>Granted</h5>
-                            <h1>5</h1>
+                            <h1>{{grant}}</h1>
                         </div>
                         <div class="card bg-secondary p-3">
                             <h5>Available</h5>
-                            <h1>5</h1>
+                            <h1>{{aval}}</h1>
                         </div>
                     </div>
 
                 </div>
                 <div class="text-end mx-1 my-5">
-                    <a href="" class="btn btn-primary">Request E-Book</a>
+                    <a href="/create-ebook" class="btn btn-primary">Create E-Book</a>
                 </div>
             </div>
 

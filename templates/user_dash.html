@@ -48,8 +48,8 @@
                                 <th scope="row">{{ebook.id}}</th>
                                 <td>{{ebook.name}}</td>
                                 <td>{{ebook.author}}</td>
-                                <td class="d-flex justify-content-center"><a href="" class="btn btn-info mx-2">View</a>
-                                    <a href="" class="btn btn-warning">Return</a>
+                                <td class="d-flex justify-content-center"><a href="/view/{{ebook.name}}/{{ebook.user_id}}" class="btn btn-info mx-2">Read</a>
+                                    <a href="/return/{{ebook.id}}/{{this_user.id}}" class="btn btn-warning" onclick="return confirm('Are you sure? you want to return your book?')">Return</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div id="content">
-                <h3 class="headings">Available E-books</h3>
+                <h3 class="headings">Requested E-books</h3>
                 <div class="table">
                     <table class="table">
                         <thead>

@@ -33,8 +33,8 @@
                                 </li>
                             </ul>
                             <form class="d-flex" role="search" action="/search">
-                                <input class="form-control me-2" type="search" placeholder="Search"
-                                    aria-label="Search" name="search" />
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                    name="search" />
                                 <select class="form-select me-2" aria-level="Default select example" name="key">
                                     <option selected>Select</option>
                                     <option value="user">User</option>
@@ -60,48 +60,88 @@
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {% for ebook in req_ebooks %}
+                        <div id="table" class="border" style="max-height: 200px; overflow-y: scroll;">
+                            <tbody>
+                                {% for ebook in req_ebooks %}
 
-                            <tr>
-                                <th scope="row">{{ebook.id}}</th>
-                                <td>{{ebook.name}}</td>
-                                <td>{{ebook.author}}</td>
-                                <td>{{ebook.bearer.username}}</td>
+                                <tr>
+                                    <th scope="row">{{ebook.id}}</th>
+                                    <td>{{ebook.name}}</td>
+                                    <td>{{ebook.author}}</td>
+                                    <td>{{ebook.bearer.username}}</td>
 
-                                <td class="d-flex justify-content-center"><a
-                                        href="/grant/{{ebook.id}}/{{ebook.user_id}}" class="btn btn-info mx-2">Grant</a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
+                                    <td class="d-flex justify-content-center"><a
+                                            href="/grant/{{ebook.id}}/{{ebook.user_id}}"
+                                            class="btn btn-info mx-2" onclick="return confirm('Are you sure? you want to grant this book?')">Grant</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </div>
                     </table>
-                    <div class="d-flex justify-content-evenly text-center">
-                        <div class="card bg-info p-3">
-                            <h5>Users</h5>
-                            <h1>{{users}}</h1>
+                    <h3 class="headings">Return Approve E-books</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Username</th>
+
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <div id="table" class="border" style="max-height: 200px; overflow-y: scroll;">
+                            <tbody>
+                                {% for ebook in pen_ebooks %}
+
+                                <tr>
+                                    <th scope="row">{{ebook.id}}</th>
+                                    <td>{{ebook.name}}</td>
+                                    <td>{{ebook.author}}</td>
+                                    <td>{{ebook.bearer.username}}</td>
+
+                                    <td class="d-flex justify-content-center"><a
+                                            href="/approve_return/{{ebook.id}}/{{this_user.id}}"
+                                            class="btn btn-info mx-2" onclick="return confirm('Are you sure? you want to approve return of this book?')">Return</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
                         </div>
-                        <div class="card bg-warning p-3">
-                            <h5>Requests</h5>
-                            <h1>{{reqs}}</h1>
-                        </div>
-                        <div class="card bg-success p-3">
-                            <h5>Granted</h5>
-                            <h1>{{grant}}</h1>
-                        </div>
-                        <div class="card bg-secondary p-3">
-                            <h5>Available</h5>
-                            <h1>{{aval}}</h1>
-                        </div>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-evenly text-center">
+                    <div class="card bg-info p-3">
+                        <h5>Users</h5>
+                        <h1>{{users}}</h1>
                     </div>
+                    <div class="card bg-warning p-3">
+                        <h5>Requests</h5>
+                        <h1>{{reqs}}</h1>
+                    </div>
+                    <div class="card bg-success p-3">
+                        <h5>Granted</h5>
+                        <h1>{{grant}}</h1>
+                    </div>
+                    <div class="card bg-secondary p-3">
+                        <h5>Available</h5>
+                        <h1>{{aval}}</h1>
+                    </div>
+                    <div class="card bg-secondary p-3">
+                        <h5>Pending</h5>
+                        <h1>{{pen_ebooks_count}}</h1>
+                    </div>
+                </div>
 
-                </div>
-                <div class="text-end mx-1 my-5">
-                    <a href="/create-ebook" class="btn btn-primary">Create E-Book</a>
-                </div>
             </div>
-
+            <div class="text-end mx-1 my-5">
+                <a href="/create-ebook" class="btn btn-primary">Create E-Book</a>
+            </div>
         </div>
+
+    </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

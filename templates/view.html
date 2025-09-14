@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div class="nav">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/user_dash/{{this_user.id}}">Welcome {{this_user.username}}</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/login">Logout</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search"
+                                    aria-label="Search" />
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="content">
+                {% if details %}
+                {% for ebook in details %}
+                <h5 style="background-color: rgb(236, 219, 253);">Your book: {{ebook.name}}</h5>
+                {% endfor %}
+                {% else %}
+                <h5>No name found</h5>
+                {% endif %}
+
+                <p style="background-color: rgb(206, 242, 243);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur numquam ipsam expedita harum
+                    perspiciatis, officia ratione quae ducimus obcaecati? Beatae ipsum distinctio aspernatur explicabo
+                    accusantium? Minus natus impedit fuga perferendis, sequi quos consequuntur nulla et commodi iure
+                    veniam quam nam ad a. Consequuntur possimus facilis itaque amet magnam. Ea eum alias fuga libero
+                    animi, officia earum porro excepturi non ipsam eos tenetur itaque, nemo voluptas. Excepturi
+                    repudiandae repellat, error maxime itaque optio architecto suscipit odit porro! Modi, facere
+                    accusamus quod enim illum reiciendis dicta asperiores! Iusto iure voluptatibus a distinctio
+                    aspernatur recusandae consequuntur nulla quibusdam praesentium laudantium dolore ratione veritatis
+                    adipisci, nisi exercitationem assumenda ducimus porro est fugit illo cupiditate mollitia. Labore
+                    praesentium eaque aut ab velit id beatae doloremque incidunt rerum fugiat. Iste, error veritatis?
+                    Totam porro, veritatis eum tempore error eveniet consequatur quod aperiam ab voluptatum cum
+                    sapiente. Ratione, rem? Reiciendis obcaecati veritatis fugiat et, cum amet quia in dicta tenetur at
+                    sequi quae cupiditate sit voluptas harum temporibus omnis repellat impedit est tempore ea aliquam
+                    perferendis ipsa facilis. Quos qui eligendi minus aliquid vitae sed et fugit assumenda! Dicta eos
+                    beatae, similique placeat minima quisquam obcaecati in dignissimos id suscipit tempore enim
+                    adipisci, aliquam inventore velit aspernatur. Doloribus magni suscipit ad consectetur sint odit, est
+                    consequatur nemo veritatis sapiente debitis? Deleniti, pariatur dignissimos. Sequi ipsum accusamus
+                    quaerat molestias porro adipisci iure deserunt, praesentium, dolores at earum? Placeat quibusdam
+                    dicta ullam, impedit voluptatem, adipisci culpa dolore odit excepturi illum fugiat est blanditiis
+                    perferendis dolores ea eveniet enim amet? Aperiam laborum voluptatem autem eaque quos id laudantium
+                    excepturi aliquam, est fugit perferendis reiciendis, dolorum earum assumenda. Voluptas minima quis
+                    libero ipsa dignissimos impedit dolorum fuga enim, quaerat adipisci magni autem vitae natus
+                    exercitationem sunt quae magnam aspernatur error mollitia at obcaecati, neque iste doloribus
+                    asperiores. Assumenda culpa incidunt illum est quis debitis neque soluta vel ad doloremque, beatae,
+                    at suscipit, reiciendis magni ex. Possimus temporibus consequatur iste velit exercitationem! Velit
+                    odio ut labore, consequatur accusamus nihil eaque. Ea dolore nisi enim ipsam. Aliquid tempora sed
+                    cupiditate porro, aut totam veniam nam debitis eligendi! Sed dolores qui pariatur sint voluptate
+                    dolorem unde numquam maiores. Id itaque eos veniam debitis, magni tempore repellendus eaque animi
+                    dolor delectus quas accusantium minus praesentium odit similique doloremque cumque quos aut illo
+                    nobis, odio vitae neque, officia sit. Distinctio autem minus omnis placeat rem saepe, hic porro,
+                    accusantium aliquid eligendi deleniti, repellat dignissimos nihil? Dolorum?</p>
+            </div>
+        </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>

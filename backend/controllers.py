@@ -22,9 +22,9 @@ def login():
                 else:
                     return redirect(f'/user_dash/{this_user.id}')
             else:
-                return "Invalid password try again"
+                return render_template('login.html', msg="Invalid password try again")
         else:
-            return "User does not exit"
+            return render_template('login.html', msg="User does not exist")
     return render_template('login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -36,14 +36,14 @@ def register():
         user_name = User.query.filter_by(username=username).first()
         user_email = User.query.filter_by(email=email).first()
         if user_name or user_email:
-            return "User Already exist please login"
+            return render_template("login.html", msg="User Already exist please login")
         else:
             user = User(username = username,
                         password=password,
                         email = email)
             db.session.add(user)
             db.session.commit()
-        return "registed successfully!"
+        return render_template("login.html", msg="registed successfully please login buddy!")
     return render_template('register.html')
 
 @app.route('/admin')
@@ -150,6 +150,7 @@ def view(ebook, user_id):
 
 @app.route("/summary")
 def summary():
+    this_user = User.query.filter_by(type='admin').first()
     av = len(Ebook.query.filter_by(status = "available").all())
     re = len(Ebook.query.filter_by(status = "requested").all())
     gr = len(Ebook.query.filter_by(status = "granted").all())
@@ -174,4 +175,31 @@ def summary():
     plt.savefig("static/bar.png")
     plt.clf()
 
-    return render_template("/summary.html", av=av, re = re, gr=gr, pen=pen)
+    return render_template("/summary.html", av=av, re = re, gr=gr, pen=pen, this_user=this_user)
+
+@app.route("/user_summary/<int:user_id>")
+def user_summary(user_id):
+    this_user = User.query.filter_by(id = user_id).first()
+    re = len(Ebook.query.filter_by(status = "requested").all())
+    gr = len(Ebook.query.filter_by(status = "granted").all())
+
+# pie chart (generated cards)
+    labels = ['requested', 'granted']
+    sizes = [re, gr]
+    colors = ['yellow', 'green']
+    plt.pie(sizes, labels=labels, colors=colors, autopct="%1.1f%%")
+    plt.title("status of ebooks")
+    plt.savefig("static/pie.png")
+    plt.clf()
+
+#bar graph (requested cards)
+    labels = ['requested', 'granted']
+    sizes = [re, gr]
+    plt.bar(labels, sizes)
+    plt.xlabel("status of E-books")
+    plt.ylabel("No of E-books")
+    plt.title("Ebooks Status Distribution")
+    plt.savefig("static/bar.png")
+    plt.clf()
+    return render_template("/user_summary.html",re = re, gr=gr, this_user=this_user)
+
